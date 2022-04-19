@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
 import rospy
-import sensor_msgs.msg import Joy
-import geometry_msgs.msg import Twist
+from sensor_msgs.msg import Joy
+from geometry_msgs.msg import Twist
 
 def joy_to_twist(msg , twist_pub):
     L_horizontal = msg.axes[0]
@@ -19,7 +19,7 @@ def joy_to_twist(msg , twist_pub):
 
 if __name__ == '__main__':
     rospy.init_node('joy_to_twist')
-    twist_pub = rospy.publisher('turtle1/cmd_vel',Twist,queue_size=1)
+    twist_pub = rospy.Publisher('/turtle1/cmd_vel',Twist,queue_size=1)
 
     rospy.Subscriber('/joy',Joy,joy_to_twist,twist_pub)
 
