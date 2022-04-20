@@ -5,10 +5,10 @@ from sensor_msgs.msg import Joy
 from geometry_msgs.msg import Twist
 
 def joy_to_twist(msg , twist_pub):
-    L_horizontal = msg.axes[0]
+    R_horizontal = msg.axes[0]
     L_vertical = msg.axes[1]
-    circle = msg.buttons[13]
-    velocity = [L_horizontal*(1+circle),L_vertical*(1+circle)]
+    
+    velocity = [R_horizontal*2,L_vertical]
 
     t = Twist()
 
